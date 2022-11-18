@@ -2,13 +2,7 @@
 <html lang="pt-BR">
 <head>
     @include('admin.includes.header')
-    @yield('graficos-google')
 </head>
-<style>
-    .ativo{
-        background-color: #0000004A;
-    }
-</style>
 <body>
     <div class="page-wrapper chiller-theme toggled">
         <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">

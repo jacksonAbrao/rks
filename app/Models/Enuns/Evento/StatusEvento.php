@@ -6,14 +6,14 @@ use App\Models\Enuns\BaseEnum;
 class StatusEvento extends BaseEnum
 {
     protected $enumeradores = [
-        // 'novo' => 'Novo',
+        'novo' => 'Novo',
         'rascunho' => 'Rascunho',
         'vendendo' => 'Vendendo',
         'fechado' => 'Fechado',
         'cancelado' => 'Cancelado'
     ];
 
-    // const Novo = 'novo';
+    const Novo = 'novo';
     const Rascunho = 'rascunho';
     const Vendendo = 'vendendo';
     const Fechado = 'fechado';
