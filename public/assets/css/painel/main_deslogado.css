@@ -1,0 +1,138 @@
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--darkles-black);
+    font-weight: 400;
+    font-style: normal;
+}
+
+main {
+    background-image: linear-gradient(98.94deg, #f2385a80 23.38%, #0000f580 67.02%), url('../../img/people.jpg') !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardLogin {
+    width: 100%;
+    max-width: 550px;
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.cardLogin .logo {
+    display: block;
+}
+
+.cardLogin .logo img {
+    max-width: 220px;
+}
+
+.cardLogin .btn {
+    width: 100%;
+    background-color: var(--base-blue);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 10px;
+}
+
+.cardLogin .btn:hover {
+    background-color: var(--base-pink);
+    border-color: var(--base-pink);
+}
+
+.cardLogin .btn:focus {
+    box-shadow: none;
+}
+
+.cardLogin a {
+    color: var(--base-blue);
+}
+
+.cardLogin a:hover {
+    color: var(--base-pink);
+}
+
+.cardLogin span.required {
+    color: var(--base-red);
+}
+
+form .form-group {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+form .form-control {
+    padding: .5rem 1rem;
+}
+
+form .form-group.whit-errors-2-lines {
+    margin-bottom: 35px;
+}
+
+form .form-group.group-icon [class^="icon-"] {
+    position: absolute;
+    left: -60px;
+    font-size: 40px;
+    top: 36px;
+}
+
+form .form-group .form-text .list-unstyled {
+    padding: 0;
+    margin: 0;
+}
+
+form .form-group .with-errors {
+    position: absolute;
+}
+
+form .form-group.has-error .with-errors {
+    color: var(--base-red);
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 500;
+    margin: 5px 0 0;
+}
+
+form .form-group.has-error input {
+    border-color: var(--base-red);
+}
+
+form .form-control:focus {
+    border-color: var(--base-blue);
+    box-shadow: none;
+}
+
+.password-strength__visibility {
+    position: absolute;
+    color: var(--base-blue);
+    right: 8px;
+    top: 34px;
+    cursor: pointer;
+}
+
+.password-strength__visibility .js-hidden {
+    display: none;
+}
+
+.password-strength__visibility.clicked .password-strength__visibility-icon {
+    display: none;
+}
+
+.password-strength__visibility.clicked .js-hidden {
+    display: block;
+}
