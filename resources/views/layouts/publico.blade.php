@@ -1,7 +1,9 @@
-@include('front.includes.header')
-
-<div class="d-flex d-column w-100">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    @include('admin.includes.header')   
+</head>
+<body>
     @yield('content')
-</div>
-
-@include('front.includes.footer')
+</body>
+</html>

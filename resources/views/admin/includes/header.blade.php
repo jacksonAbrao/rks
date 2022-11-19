@@ -27,5 +27,5 @@
 <script src="{{asset('assets/js/admin/main.js')}}?v=1.0"></script>
 
 <title>
-    {{config('app.name')}} - @yield('title')
+    Admin - @yield('title')
 </title>

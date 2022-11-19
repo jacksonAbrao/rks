@@ -1,9 +1,6 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-    @include('admin.includes.header')
-</head>
-<body>
+@extends('layouts.publico')
+@section('title', 'Login')
+@section('content')
     <main class="login">
         <div class="container">
             <div class="row justify-center">
@@ -61,5 +58,4 @@
             }
         });
     </script>
-</body>
-</html>
+@stop
