@@ -5191,12 +5191,12 @@ var ImageEditor = function () {
                 return {
                     buttonCancelClassName: null,
                     buttonConfirmClassName: null,
-                    buttonCancelLabel: 'Cancel',
-                    buttonConfirmLabel: 'Confirm',
+                    buttonCancelLabel: null,
+                    buttonConfirmLabel: null,
                     buttonCancelTitle: null,
                     buttonConfirmTitle: null,
 
-                    buttonRotateTitle: 'Rotate',
+                    buttonRotateTitle: null,
                     buttonRotateClassName: null,
 
                     devicePixelRatio: null,
@@ -7282,13 +7282,13 @@ var Slim = function () {
                 buttonCancelClassName: this._options.buttonCancelClassName,
                 buttonRotateClassName: this._options.buttonRotateClassName,
 
-                buttonConfirmLabel: this._options.buttonConfirmLabel,
-                buttonCancelLabel: this._options.buttonCancelLabel,
-                buttonRotateLabel: this._options.buttonRotateLabel,
+                buttonConfirmLabel: 'Confirmar',
+                buttonCancelLabel: 'Cancelar',
+                buttonRotateLabel: 'Rotacionar',
 
-                buttonConfirmTitle: this._options.buttonConfirmTitle,
-                buttonCancelTitle: this._options.buttonCancelTitle,
-                buttonRotateTitle: this._options.buttonRotateTitle
+                buttonConfirmTitle: 'Confirmar',
+                buttonCancelTitle: 'Cancelar',
+                buttonRotateTitle: 'Rotacionar'
             });
 
             // listen to events
@@ -8300,17 +8300,17 @@ var Slim = function () {
                 popoverClassName: null,
 
                 // label HTML to show inside drop area
-                label: '<p>Drop your image here</p>',
-                labelLoading: '<p>Loading image...</p>',
+                label: '<p>Arraste e solte sua imagem aqui</p>',
+                labelLoading: '<p>Carregando imagem...</p>',
 
                 // error messages
-                statusFileType: '<p>Invalid file type, expects: $0.</p>',
-                statusFileSize: '<p>File is too big, maximum file size: $0 MB.</p>',
-                statusNoSupport: '<p>Your browser does not support image cropping.</p>',
-                statusImageTooSmall: '<p>Image is too small, minimum size is: $0 pixels.</p>',
-                statusContentLength: '<span class="slim-upload-status-icon"></span> The file is probably too big',
-                statusUnknownResponse: '<span class="slim-upload-status-icon"></span> An unknown error occurred',
-                statusUploadSuccess: '<span class="slim-upload-status-icon"></span> Saved',
+                statusFileType: '<p>Tipo de arquivo inválido, permitidos: $0.</p>',
+                statusFileSize: '<p>O arquivo é muito grande, o tamanho máximo do arquivo é de $0 MB.</p>',
+                statusNoSupport: '<p>Seu navegador não suporta recorte de imagem.</p>',
+                statusImageTooSmall: '<p>A imagem é muito pequena, o tamanho mínimo é: $0 pixels.</p>',
+                statusContentLength: '<span class="slim-upload-status-icon"></span> O arquivo provavelmente é muito grande',
+                statusUnknownResponse: '<span class="slim-upload-status-icon"></span> Ocorreu um erro desconhecido',
+                statusUploadSuccess: '<span class="slim-upload-status-icon"></span> Salvo',
                 statusLocalUrlProblem: null,
 
                 // callback methods

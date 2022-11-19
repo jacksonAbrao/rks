@@ -476,6 +476,7 @@ button.btn_light_mode {
 
 .sidebar-menu ul .auxiliar {
     width: 70px;
+    min-width: 70px;
     text-align: center;
     position: relative;
 }

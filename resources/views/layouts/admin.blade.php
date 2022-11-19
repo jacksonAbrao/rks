@@ -3,30 +3,103 @@
 <head>
     @include('admin.includes.header')
 </head>
-<body>
-    <div class="page-wrapper chiller-theme toggled">
-        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-            <i class="fas fa-bars"></i>
-        </a>
-        <nav id="sidebar" class="sidebar-wrapper">
-            <div class="sidebar-content">
-                <div class="sidebar-brand">
-                    <a href="{{route('admin:home')}}">{{config('app.name')}}</a>
-                    <div id="close-sidebar">
-                        <i class="fas fa-times"></i>
+@php
+    $theme = json_decode(session('customizacao_ui'), true);
+    $theme = !is_null($theme) ? $theme['tema'] : 'light';
+@endphp
+<body class="{{$theme}}">
+    <header>
+        <nav class="navbar hidden-m">
+            <div class="align-menu">
+                <div class="toggle-menu">
+                    <a class="navbar-brand" href="{{ route('admin:home') }}">
+                        <img class="logo_light" src="{{asset('assets/img/admin/logoCit.png')}}">
+                    </a>
+                </div>
+
+                <div class="nav-content hidden-m">
+                    {{-- @include('painel.includes.dark_mode') --}}
+                    <div class="dropdown nav-user-dropdown">
+                        <div class="dropdown-toggle nav-user-header" id="dropdownNavUser" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="avatar">
+                                <img src="{{ session('usuarioAvatar','')}}">
+                            </div>
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownNavUser">
+                            <div class="nav-user-content">
+                                <div class="avatar">
+                                    <img src="{{ session('usuarioAvatar','')}}">
+                                </div>
+                                <div class="content">
+                                    <p class="name max_line max_line_1">
+                                        {{ session('usuarioNome', '') }}
+                                    </p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li><a href="{{route('fazer.logout')}}"><i class="uil uil-sign-out-alt"></i> Sair da Conta</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="sidebar-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="{{ session('usuarioAvatar','') }}" alt="Avatar usuário">
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name">
-                            {{ session('usuarioNome', '') }}
-                        </span>
+            </div>
+        </nav>
+        
+        <nav class="visible-m mobile">
+            <div class="container">
+                <a class="logo navbar-brand" href="{{route('home.painel')}}">
+                    {{-- <img class="logo_light" src="{{asset('assets/img/logos/Colorida-black.png')}}"> --}}
+                    <img class="logo_dark" src="{{asset('assets/img/logos/Colorida-Offwhite.png')}}">
+                </a>
+                <div class="menu-darkmode-mobile">
+                    {{-- @include('painel.includes.dark_mode') --}}
+                    <div class="hamburguer">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
                     </div>
                 </div>
-                <div class="sidebar-menu">
+            </div>
+            <div class="dropdown-mobile accordion sidebar-accordion">
+                <ul>
+                    <li class="c-white link-sidebar acordeao <?php if(isset($pagina) && $pagina == 'perfil') : echo 'active'; endif ;?>">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZero" aria-expanded="true" aria-controls="collapseZero">
+                            <div class="auxiliar">
+                                <i class="uil uil-user"></i>
+                            </div>
+                            <p class="t-link">Perfil</p>
+                        </button>
+                    </li>
+                    <div class="accordion-item">
+                        <div id="collapseZero" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent=".sidebar-accordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="c-white link-sidebar  <?php if(isset($subpagina) && $subpagina == 'logout') : echo 'active'; endif ;?>">
+                                        <a href="{{ route('fazer.logout') }}">
+                                            <div class="auxiliar">
+                                                <i class="fas fa-circle"></i>
+                                            </div>
+                                            <p class="t-link">Sair da Conta</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    @include('admin.includes.lista_menu')
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="dashboard">
+        @include('admin.includes.sidebar')
+        <div class="content content_painel">
+            <div class="d-flex d-column w-100">
+                @yield('content')
+            </div>
+        </div>
+    </main>
+    {{--       <div class="sidebar-menu">
                     <ul>
                         <li class="sidebar-dropdown" id="menu-usuarios">
                             <a href="#">
@@ -107,54 +180,14 @@
                     </ul>
                 </div>
             </div>
-            <div class="sidebar-footer">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-warning notification">0</span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-envelope"></i>
-                    <span class="badge badge-pill badge-success notification">0</span>
-                </a>
-                <a href="#" data-toggle="modal" data-target="#modallogout">
-                    <i class="fa fa-power-off"></i>
-                </a>
-            </div>
         </nav>
-        <div class="modal fade" id="modallogout" tabindex="-1" role="dialog" aria-labelledby="modallogoutTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Você realmente quer sair?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Quando fizer logout será necessário logar novamente para ter acesso</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                        <a href={{route('admin:realizar.logout')}} class="btn btn-danger">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <main class="page-content">
-            <div class="container-fluid">
-                @yield('content')
-                <hr>
-                <footer class="text-center">
-                    <div class="mb-2">
-                        <small class="d-flex justify-content-center align-items-center" style="font-size: 18px;">
-                            <i class="fab fa-laravel"></i> &nbsp; <a target="_blank" rel="noopener noreferrer" href="https://github.com/">
-                                Git
-                            </a>
-                        </small>
-                    </div>
-                </footer>
-            </div>
-        </main>
-    </div>
+        
+    </div> --}}
 </body>
+
+<script>
+    $('.hamburguer').on('click', function() {
+		$('nav.mobile').toggleClass('open');
+	});
+</script>
 </html>
