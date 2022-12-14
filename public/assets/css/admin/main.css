@@ -251,6 +251,7 @@ body {
     height: 56px;
     background-color: var(--white);
     border-radius: 50%;
+    overflow: hidden;
 }
 
 .navbar .nav-content .nav-user-dropdown .dropdown-menu .nav-user-content .content {

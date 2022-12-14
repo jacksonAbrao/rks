@@ -2,14 +2,6 @@
 @section('title', 'Painel')
 
 @section('content')
-@component('painel.components.breadcrumb')
-    @slot(
-        'breadcrumb', 
-        [
-            'Dashboard' => 'fazer.login.painel',
-            'Carteira' => 'home.painel'
-        ]);
-@endcomponent
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
